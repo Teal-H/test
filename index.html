@@ -68,7 +68,7 @@
 
 <body>
     <div class="bbbb">
-        <div>距离下班还有，</div>
+        <div class="llll">距离下班还有，</div>
         <div class="time"></div>
     </div>
 </body>
@@ -93,15 +93,22 @@
     }
 
     let box = document.querySelector('.time')
+    let llll = document.querySelector('.llll')
     const goHome = new Date('2021/9/30 18:30:00').getTime()
     let nowDate = new Date().getTime()
     let diff = goHome - nowDate
-    box.innerText = formatSec(diff / 1000) > 0 ? formatSec(diff / 1000) : '下班咯'
+    box.innerText = diff > 0 ? formatSec(diff / 1000) : '下班咯'
+    if (diff > 0) {
+        llll.style.display = 'none'
+    }
     setInterval(() => {
         nowDate = new Date().getTime()
         diff = goHome - nowDate
 
-        box.innerText = formatSec(diff / 1000) > 0 ? formatSec(diff / 1000) : '下班咯'
+        box.innerText = diff > 0 ? formatSec(diff / 1000) : '下班咯'
+        if (diff > 0) {
+        llll.style.display = 'none'
+    }
     }, 1000);
 
 </script>
