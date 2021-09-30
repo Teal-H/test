@@ -98,7 +98,7 @@
     let nowDate = new Date().getTime()
     let diff = goHome - nowDate
     box.innerText = diff > 0 ? formatSec(diff / 1000) : '下班咯'
-    if (diff > 0) {
+    if (diff < 0) {
         llll.style.display = 'none'
     }
     setInterval(() => {
@@ -106,7 +106,7 @@
         diff = goHome - nowDate
 
         box.innerText = diff > 0 ? formatSec(diff / 1000) : '下班咯'
-        if (diff > 0) {
+        if (diff < 0) {
         llll.style.display = 'none'
     }
     }, 1000);
