@@ -96,12 +96,12 @@
     const goHome = new Date('2021/9/30 18:30:00').getTime()
     let nowDate = new Date().getTime()
     let diff = goHome - nowDate
-    box.innerText = formatSec(diff / 1000)
+    box.innerText = formatSec(diff / 1000) > 0 ? formatSec(diff / 1000) : '下班咯'
     setInterval(() => {
         nowDate = new Date().getTime()
         diff = goHome - nowDate
 
-        box.innerText = formatSec(diff / 1000)
+        box.innerText = formatSec(diff / 1000) > 0 ? formatSec(diff / 1000) : '下班咯'
     }, 1000);
 
 </script>
