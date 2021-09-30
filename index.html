@@ -9,27 +9,30 @@
     <style>
         @keyframes animatName {
             0% {
-                top: 5vh;
-                left: 5vw;
+                top: 0;
+                left: 0;
             }
 
             20% {
-                top: calc(80vh);
-                left: calc(80vw);
+                top: 100vh;
+                left: 100vw;
+                transform: translate(-100%, -100%);
             }
 
             50% {
-                top: 5vh;
-                left: calc(80vw);
+                top: 0;
+                left: 100vw;
+                transform: translate(-100%);
             }
 
             80% {
-                top: calc(80vh);
-                left: 5vw;
+                top: 100vh;
+                left: 0;
+                transform: translate(0, -100%);
             }
             100% {
-                top: 5vh;
-                left: 5vw;
+                top: 0;
+                left: 0;
             }
         }
 
