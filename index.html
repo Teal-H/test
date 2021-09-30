@@ -7,11 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        @keyframes animatName {
+            0% {
+                top: 5vh;
+                left: 5vw;
+            }
+
+            20% {
+                top: calc(80vh);
+                left: calc(80vw);
+            }
+
+            50% {
+                top: 5vh;
+                left: calc(80vw);
+            }
+
+            80% {
+                top: calc(80vh);
+                left: 5vw;
+            }
+            100% {
+                top: 5vh;
+                left: 5vw;
+            }
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: url('http://liveshowoss.sobeylingyun.com/2021/9/23/eba8745e-1a5e-e499-b8de-5f5ab26dc7c5.png');
+            background-size: 100% 100%;
+        }
+
+        .bbbb {
+            width: 300px;
+            height: 120px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 40px;
+            background-image: -webkit-linear-gradient(bottom, red, #ff5f60, #f0c41b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animatName 60s ease 0s infinite normal both;
+        }
     </style>
 </head>
 
 <body>
-    距离下班
+    <div class="bbbb">
+        <div>距离下班还有，</div>
+        <div class="time"></div>
+    </div>
 </body>
 <script>
     function formatSec(time) {
@@ -33,9 +89,7 @@
         return `${hh.toString()}:${mm.toString()}:${ss.toString()}`
     }
 
-    let box = document.createElement('div')
-    document.body.appendChild(box)
-    
+    let box = document.querySelector('.time')
     const goHome = new Date('2021/9/30 18:30:00').getTime()
     let nowDate = new Date().getTime()
     let diff = goHome - nowDate
@@ -43,7 +97,7 @@
     setInterval(() => {
         nowDate = new Date().getTime()
         diff = goHome - nowDate
-        
+
         box.innerText = formatSec(diff / 1000)
     }, 1000);
 
