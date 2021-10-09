@@ -1,116 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        @keyframes animatName {
-            0% {
-                top: 0;
-                left: 0;
-            }
-
-            20% {
-                top: 100vh;
-                left: 100vw;
-                transform: translate(-100%, -100%);
-            }
-
-            50% {
-                top: 0;
-                left: 100vw;
-                transform: translate(-100%);
-            }
-
-            80% {
-                top: 100vh;
-                left: 0;
-                transform: translate(0, -100%);
-            }
-            100% {
-                top: 0;
-                left: 0;
-            }
-        }
-
-        * {
-            padding: 0;
+        body {
             margin: 0;
-        }
-
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            background: url('http://liveshowoss.sobeylingyun.com/2021/9/23/eba8745e-1a5e-e499-b8de-5f5ab26dc7c5.png');
-            background-size: 100% 100%;
-        }
-
-        .bbbb {
-            width: 300px;
-            height: 120px;
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative;
+            height: 100vh;
             font-size: 40px;
-            background-image: -webkit-linear-gradient(bottom, red, #ff5f60, #f0c41b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: animatName 60s ease 0s infinite normal both;
+        }
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
     </style>
 </head>
-
 <body>
-    <div class="bbbb">
-        <div class="llll">距离下班还有，</div>
-        <div class="time"></div>
+    <div class="box" >
+        <div class="phone" >
+            17628067806
+        </div>
+        <button class="btn" >点击拨号</button>
     </div>
 </body>
 <script>
-    function formatSec(time) {
-        if (time === undefined) {
-            return ''
-        }
-
-        if (time?.includes?.(':')) {
-            return time
-        }
-
-        time = parseInt(time)
-        let ss = time % 60
-        let mm = parseInt(time / 60 % 60)
-        let hh = parseInt(time / 60 / 60)
-        ss = ss < 10 ? '0' + ss : ss
-        mm = mm < 10 ? '0' + mm : mm
-        hh = hh < 10 ? '0' + hh : hh
-        return `${hh.toString()}:${mm.toString()}:${ss.toString()}`
-    }
-
-    let box = document.querySelector('.time')
-    let llll = document.querySelector('.llll')
-    const goHome = new Date('2021/9/30 18:30:00').getTime()
-    let nowDate = new Date().getTime()
-    let diff = goHome - nowDate
-    box.innerText = diff > 0 ? formatSec(diff / 1000) : '下班咯'
-    if (diff < 0) {
-        llll.style.display = 'none'
-    }
-    setInterval(() => {
-        nowDate = new Date().getTime()
-        diff = goHome - nowDate
-
-        box.innerText = diff > 0 ? formatSec(diff / 1000) : '下班咯'
-        if (diff < 0) {
-        llll.style.display = 'none'
-    }
-    }, 1000);
-
+    let phone = document.querySelector('.phone')
+    let btn = document.querySelector('.btn')
+    btn.addEventListener('click', function() {
+        window.location.href = 'tel:' + phone.innerText
+    })
 </script>
-
 </html>
